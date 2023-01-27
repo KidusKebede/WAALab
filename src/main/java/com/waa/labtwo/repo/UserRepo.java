@@ -16,6 +16,10 @@ public interface UserRepo extends CrudRepository<Users, Long> {
     @Query("SELECT u  FROM Users u join u.posts p WHERE p.title = :name")
     public List<Users> findAllByPostsByTitleEquals(String name);
 
+//    @Query("select u from  Users  u join u.posts p where  p.size>:n")
+//    public List<Users> findA(int n);
+
     @Query("select c from Comment c join c.post p join p.user u where u.id= :a and p.id=:b and c.id =:c")
     public Comment findCommentByUserPost(Long a, Long b, Long c);
+    
 }

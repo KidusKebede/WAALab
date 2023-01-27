@@ -21,11 +21,18 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
-    String name;
+    private String email;
+    private String password;
+    private String firstname;
+    private String lastname;
     @OneToMany(cascade ={CascadeType.MERGE, CascadeType.REMOVE} ,fetch = FetchType.LAZY)//(mappedBy = "user_id") // @OneToMany
     @JsonManagedReference
     @Fetch(FetchMode.SELECT)
 
     @JoinColumn(name = "user_id")
     List<Post> posts;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+   @JoinTable
+    private List<Role> roles;
 }

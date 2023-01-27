@@ -21,5 +21,6 @@ public interface UserRepo extends CrudRepository<Users, Long> {
 
     @Query("select c from Comment c join c.post p join p.user u where u.id= :a and p.id=:b and c.id =:c")
     public Comment findCommentByUserPost(Long a, Long b, Long c);
-    
+
+    Users findByEmail(String email);
 }

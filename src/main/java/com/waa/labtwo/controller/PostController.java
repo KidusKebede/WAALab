@@ -16,8 +16,8 @@ import java.util.List;
 @RequestMapping("/api/v1/posts")
 @CrossOrigin(origins = {"http://localhost:3030"})
 public class PostController {
-    @Autowired
-    PostDTOService postDTOService;
+//    @Autowired
+//    PostDTOService postDTOService;
     PostService postService;
 
     @Autowired
@@ -29,17 +29,17 @@ public class PostController {
     // DTO implementation
     //``````````````````````````````````````````````````````````````````````````````````````````````````````````````
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/dto")
-    public void save(@RequestBody PostDto p) {
-        postDTOService.save(p);
-    }
-
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("dto/{id}")
-    public void deleteDto(@PathVariable long id) {
-        postDTOService.delete(id);
-    }
+//    @ResponseStatus(HttpStatus.CREATED)
+//    @PostMapping("/dto")
+//    public void save(@RequestBody PostDto p) {
+//        postDTOService.save(p);
+//    }
+//
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    @DeleteMapping("dto/{id}")
+//    public void deleteDto(@PathVariable long id) {
+//        postDTOService.delete(id);
+//    }
 //
 //    @PutMapping("/{id}")
 //    public void update(@PathVariable("id") long id, @RequestBody PostDto p) {
@@ -85,6 +85,11 @@ public class PostController {
 
     @GetMapping
     public List<Post> findAllUsers() {
+        return postService.findAll();
+    }
+
+    @GetMapping("/admin")
+    public List<Post> findAllUsersUsingAdmin() {
         return postService.findAll();
     }
 

@@ -19,21 +19,21 @@ import java.util.List;
 @RequestMapping("/api/v1/users")
 @CrossOrigin(origins = {"http://localhost:3030"})
 public class UserController {
-    @Autowired
-    UserDTOService userDTOService;
+//    @Autowired
+//    UserDTOService userDTOService;
     private UserService userService;
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/dto")
-    public void save(@RequestBody UserDto p) {
-        userDTOService.save(p);
-    }
-
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("dto/{id}")
-    public void deleteDto(@PathVariable long id) {
-        userDTOService.delete(id);
-    }
+//    @ResponseStatus(HttpStatus.CREATED)
+//    @PostMapping("/dto")
+//    public void save(@RequestBody UserDto p) {
+//        userDTOService.save(p);
+//    }
+//
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    @DeleteMapping("dto/{id}")
+//    public void deleteDto(@PathVariable long id) {
+//        userDTOService.delete(id);
+//    }
 //
 //    @PutMapping("/{id}")
 //    public void update(@PathVariable("id") long id, @RequestBody PostDto p) {

@@ -1,9 +1,10 @@
 package com.waa.labtwo.controller;
 
-import edu.miu.springsecurity1.entity.dto.request.LoginRequest;
-import edu.miu.springsecurity1.entity.dto.request.RefreshTokenRequest;
-import edu.miu.springsecurity1.entity.dto.response.LoginResponse;
-import edu.miu.springsecurity1.service.AuthService;
+import com.waa.labtwo.entity.dto.request.LoginRequest;
+import com.waa.labtwo.entity.dto.request.RefreshTokenRequest;
+import com.waa.labtwo.entity.dto.response.LoginResponse;
+import com.waa.labtwo.service.AuthService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final AuthService authService;
-
+@Autowired
     public AuthController(AuthService authService) {
         this.authService = authService;
     }

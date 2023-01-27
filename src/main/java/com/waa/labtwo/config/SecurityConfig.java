@@ -1,7 +1,7 @@
 package com.waa.labtwo.config;
 
 
-import edu.miu.springsecurity1.filter.JwtFilter;
+import com.waa.labtwo.filter.JwtFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,8 +41,10 @@ public class SecurityConfig {
         http
                 .csrf().disable().cors().and()
                 .authorizeRequests()
-                .antMatchers("/api/v1/authenticate/**").permitAll()
-                .antMatchers("/api/v1/products").hasAuthority("CLIENT")
+                .requestMatchers("/api/v1/authenticate/**").permitAll()
+                .requestMatchers("/api/v1/posts/**").hasAnyAuthority("ADMIN","USER")
+                .requestMatchers("/api/v1/users/**").hasAnyAuthority("ADMIN","USER")
+                .requestMatchers("/api/v1/admin/**").hasAuthority("ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -56,7 +58,7 @@ public class SecurityConfig {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().antMatchers("/images/**", "/js/**", "/webjars/**");
+        return (web) -> web.ignoring().requestMatchers("/images/**", "/js/**", "/webjars/**");
     }
 
     @Bean
